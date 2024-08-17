@@ -7,4 +7,3 @@
 # Using reqwest for webscraping 
 
 [github link](https://github.com/seanmonstar/reqwest)
-
