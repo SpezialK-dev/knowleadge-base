@@ -194,3 +194,96 @@ this is only needed for data types such as strings which can be determined at ru
 if its larger data types simply pass them by reference something that should be done anyways. 
 
 Also you can only have one mutable reference to an object, that can then be the only reference to said object. 
+
+
+## Structs 
+
+A struct is defined like this 
+
+```rust
+struct User {
+    active: bool,
+    username: String,
+    email: String,
+    sign_in_count: u64,
+}
+```
+and declared like this
+```rust
+fn main() {
+    let user1 = User {
+        active: true,
+        username: String::from("someusername123"),
+        email: String::from("someone@example.com"),
+        sign_in_count: 1,
+    };
+}
+```
+
+the dot notation is used to get data from a specif 
+
+entire structs can be mutable, also the dot notation is used to access information of said structs
+
+The entire struct has to be mutable Rust does not allow to be only a certain field to be mutable 
+
+
+#### using init shorthand 
+
+example of where we are using this so save us from typing the same names twice. This only works if the parameter names and the struct field names are exactly the same
+```rust
+fn build_user(email: String, username: String) -> User {
+    User {
+        active: true,
+        username,
+        email,
+        sign_in_count: 1,
+    }
+}
+```
+
+
+## Debugging help
+
+!dbg macro is one way : 
+
+the
+```rust 
+#[derive(Debug)]
+```
+
+is needed infront of the struct to so that we can actually debug it 
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let scale = 2;
+    let rect1 = Rectangle {
+        width: dbg!(30 * scale),
+        height: 50,
+    };
+
+    dbg!(&rect1);
+}
+```
+
+alternativly we can use the :? or :#? in the print instruction to print debug information . 
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!("rect1 is {rect1:?}");
+}
+```
