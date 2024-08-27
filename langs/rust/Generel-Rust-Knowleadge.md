@@ -1,5 +1,6 @@
 [The rust book](https://doc.rust-lang.org/book/title-page.html)
 https://doc.rust-lang.org/book/ch03-02-data-types.html
+Most of the code examples are taken from the rust book and I would recomend reading the book. If you want to learn the language since these notes are more for me to remeber how to do things
 # A few very basic things 
 
 ## immutability 
@@ -226,6 +227,69 @@ entire structs can be mutable, also the dot notation is used to access informati
 
 The entire struct has to be mutable Rust does not allow to be only a certain field to be mutable 
 
+### Associated Functions
+
+some example code where an area code 
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        rect1.area()
+    );
+}
+```
+here the function area is in the context for the rectangle. Everything that is in the impl block is associated with the Rectangle. 
+
+the 
+```rust
+&self
+```
+is just a shorter version of 
+```rust
+self: &Self
+```
+
+
+this works bc. we are in an impl. Block. Hence the context is known. 
+>Methods must have a self object as its first parameter. 
+
+
+#### functions that dont take an object
+
+here is an example of how to create a function that returns an Object instead of taking one. 
+This can be used to create new "objects"
+```rust
+impl Rectangle {
+    fn square(size: u32) -> Self {
+        Self {
+            width: size,
+            height: size,
+        }
+    }
+}
+```
+
+we would use the following syntax to call said function
+```rust 
+let sq = Rectangle::square(3);
+```
 
 #### using init shorthand 
 
@@ -286,4 +350,27 @@ fn main() {
 
     println!("rect1 is {rect1:?}");
 }
+```
+
+
+## Enums
+
+can also hold different data types, even though they are from the same enum 
+### Option type 
+
+instead of NULL Rust uses the Option type. It is included in the prelude
+```rust
+enum Option<T> {
+    None,
+    Some(T),
+}
+```
+
+can be used like 
+
+```rust
+    let some_number = Some(5);
+    let some_char = Some('e');
+
+    let absent_number: Option<i32> = None;
 ```
