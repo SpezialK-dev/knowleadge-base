@@ -8,7 +8,7 @@ its a cheapo logic analyzer from amazon they only have  a weird propriatary soft
 
 - https://aur.archlinux.org/packages/pulseview-git
 - https://aur.archlinux.org/packages/sigrok-cli-git
-I recomend you use these since these work together and the other ones does not you need to compile them yourself but they are somewhat up to date. And 
+I recomend you use these since these work together and the other ones does not you need to compile them yourself but they are somewhat up to date. its best to install both packages. These work in tandem (pulseviewer us optional).
 
 ## Some sources for other lost souls 
 - [EEV blog ](https://www.eevblog.com/forum/beginners/pulseview-kingst-la1010/) where someone has the exact same question
@@ -16,12 +16,24 @@ I recomend you use these since these work together and the other ones does not y
 - [sigrok webpage](https://www.sigrok.org/wiki/Kingst_LA_Series) the current device is named as untested
 
 # Installation 
+## TLDR version
+1. add the virtual driver rules to the /etc/udev/rules.d/  directory (can be found in firmwares folder)
+```shell 
+ cp 99-Kingst.rules /etc/udet/rules.d
+``` 
+2.  put the the Sigfiles from the zip (kingst-la-Sig-files.zip) into the $HOME/.local/share/sigrok-firmware folder or another path as specified in the docs
+3. restart the pc (optional)
+4. plug in device and it should work now
+
+The open linked arch packages should be used or you should compile it yourself with the appimages I have not tried it.
+
+## Longer guid where also some trubleshooting is included
 we are trying to in install it for [sigrok](./sigrok) since that has a higher chance of working since this isnt a seleae clone. 
 
 
 >first we added the virtaul driver to the /etc/udev/rules.d/ directory
 ```shell
-cp 99-Kingst.rules/etc/udet/rules.d
+cp 99-Kingst.rules /etc/udet/rules.d
 ```
 
 this creates the following very sketchy lsusb device
@@ -38,6 +50,9 @@ and its inside of the firmwares folder. Next Issue where to put these files. Thi
 
 
 ## Extracting bitstreams yourself
+
+not needed just download the files provided  in this repo.
+
 > to aquire the git repo clone the following git link 
 > 
 ```shell
@@ -54,7 +69,7 @@ python3 sigrok-fwextract-kingst-la2016 <path to kingstVIs firmware>
 ./sigrok-fwextract-kingst-la2016 KingstVIS/KingstVIS
 ```
 
-the files extracted from there need to be placed.
+the files extracted from there need to be placed in on of the follwing paths.
 > These files can be found in the under ./firmwares/kingst-la-Sig-files.zip 
 
 as quoted from the web page 
