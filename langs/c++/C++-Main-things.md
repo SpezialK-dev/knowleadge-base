@@ -15,7 +15,7 @@ these types can be a lot more complex though and dont just need to be this easy
 cause you can do a lot of magic with the preprocessor
 ## include guards
 
-```c
+```c++
 //class_obj.h
 
 #ifndef class_obj_h
