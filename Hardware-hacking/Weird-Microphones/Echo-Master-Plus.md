@@ -1,7 +1,4 @@
 
-<<<<<<< HEAD
-# outer description 
-=======
 # Pinout connector
 
 These might be correct, no guarantees given 
@@ -39,4 +36,4 @@ the light brown and light green wires mentioned at the top are the ones that are
 
 The green and blue yellow that go out of image, go to the LED that lights up when the red button is pressed down.
 
->>>>>>> 6aca90289aa8e0ef9989497869e9af0ab92c3c93
+
