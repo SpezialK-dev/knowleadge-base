@@ -24,3 +24,17 @@ usefull in conjunction with things like pwd or other uses
 ```sh
 variable=$(<cmd>)
 ```
+
+## Script does not work with > 
+
+If you encounter a script not properly working when being piped out to a file with 
+
+```sh
+sh foo.sh > foo.txt
+```
+
+then we can use the following command and it might work at least when the previous one had given me trouble this worked
+
+```sh
+sh foo.sh | tee foo.txt
+```
