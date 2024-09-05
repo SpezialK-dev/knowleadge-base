@@ -36,3 +36,4 @@ the light brown and light green wires mentioned at the top are the ones that are
 
 The green and blue yellow that go out of image, go to the LED that lights up when the red button is pressed down.
 
+

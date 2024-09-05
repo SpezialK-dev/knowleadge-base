@@ -36,7 +36,16 @@ bssid / frequency / signal level / flags / ssid
 > set_network 0 ssid "WLAN-Network" #replace your Wlan network with said ssid 
 > set_network 0 psk "<insert the password for said network>"
 > enable_network 0
+> save_config # not yet tested 
 > reconnect # not really needed 
 ```
 
 for more info go to the above linke forum thread, this is more of a small rundown of how to use it 
+
+
+## adding it a bit more permanently
+we use the 
+```sh
+> save_config
+```
+command
