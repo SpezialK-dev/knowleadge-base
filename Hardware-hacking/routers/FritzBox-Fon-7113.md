@@ -17,6 +17,7 @@ on the bottom side we have 2x 14 pins for Jtag interfaces
 these are just pads and I wont use them for now. 
 ## Serial 
 
+
 We have a 4 pin serial these are really pins so we just need to find the pinout
 
 ![[FritzBox-Fon-7113-Serial_Pinout.png]]
@@ -28,8 +29,10 @@ the leftmost pin(the rectangular one) is pin 1 and the rightmost pin is 4.
 | ------ | ----------- |
 | 1      |             |
 | 2      |             |
-| 3      | TX(?)       |
+| 3      | TX          |
 | 4      | Ground      |
 
 Pin 3 was was detected based on using a Multimeter
 
+Transmits regular data during boot up so its definitely the transmit pin. 
+These pins are sending out in the RS232 Serial format more Information [here](https://www.raveon.com/wp-content/uploads/2019/01/AN236SerialComm.pdf). 
