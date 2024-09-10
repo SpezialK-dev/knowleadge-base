@@ -23,6 +23,6 @@ counted when left to right, with 1 being the left most pin, if you have the head
 | 3   |            |
 | 4   | a (Bell ?) |
 | 5   | b (Bell?)  |
-| 6   |            |
+| 6   | nothing    |
 
 Pin 4-5 Have a resitance between them of 1.6 K Ohm. 

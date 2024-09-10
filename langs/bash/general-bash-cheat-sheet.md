@@ -38,3 +38,9 @@ then we can use the following command and it might work at least when the previo
 ```sh
 sh foo.sh | tee foo.txt
 ```
+
+# getting the current Pid ID of a the bash script
+the following command returns the pid of the running script
+```shell
+echo & 
+```
