@@ -28,7 +28,7 @@ I recomend you use these since these work together and the other ones does not y
 The open linked arch packages should be used or you should compile it yourself with the appimages I have not tried it.
 
 ## Longer guid where also some trubleshooting is included
-we are trying to in install it for [sigrok](./sigrok) since that has a higher chance of working since this isnt a seleae clone. 
+we are trying to in install it for [sigrok](sigrok.md) since that has a higher chance of working since this isnt a seleae clone. 
 
 
 >first we added the virtaul driver to the /etc/udev/rules.d/ directory
