@@ -45,3 +45,14 @@ the possible commandline arguments are as of now
     data rawdemod --p2             -> demod PSK2 - autodetect
     
 ```
+
+
+### Emulating an abitrary tag with the proxmark 3 
+
+
+in this case we will emulate a EM410x Tag 
+
+
+```proxmark 
+lf em 410x sim --id <ID Data> --gap 0
+```
