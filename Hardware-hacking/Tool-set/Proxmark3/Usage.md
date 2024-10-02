@@ -1,6 +1,6 @@
 IMPORTANT THIS IS based on commit : d2783214e3001193d77cddedc721373bd1d16265 as head changes MIGHT break anything that happens here
 
-Firstly you should follow the [Setup](./Setup) otherwiese it WILL not work, you will need to compile and your own firmeware for this thing. There is no way around it. 
+Firstly you should follow the [Setup](Setup.md) otherwiese it WILL not work, you will need to compile and your own firmeware for this thing. There is no way around it. 
 
 
 from here on outwards all commands will be executed from 
