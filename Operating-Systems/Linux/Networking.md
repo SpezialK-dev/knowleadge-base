@@ -2,7 +2,6 @@
 # Problem with wifi being down
 
 
-
 > the wlan0 adapter is mode DOWN or Dormant
 
 wpa_cli : could not connect to wpa_supplicant  : wlan0
@@ -59,7 +58,7 @@ so we are skipping that step
 ```shell
 # iwlist wlan0 scan
 ```
-this should return a bunch of differen wifi networks choose the one you want to connect to 
+this should return a bunch of different WiFi networks choose the one you want to connect to 
 
 [Arch wiki for iwconfig](https://wiki.archlinux.org/title/Network_configuration/Wireless#Utilities)
 
@@ -82,7 +81,41 @@ since none of these returned anything sensible, my next choice of action was con
 ```shell
 iwconfig wlan0 essid <name of Hotspot> key <password in hex>
 ```
+this also for some reason did not work 
 
+## trying out iwctl and iw 
+
+after opening the iwctl 
+```shell
+iwctl 
+```
+
+
+
+the following commands all will be executed in the iwctl shell
+
+
+```iwctl
+> adapter list
+<shows a list of adapters not usefull for what we want>
+> station list
+<actually shows the status of our adapter wlan0 as disconnected>
+> station wlan0 scan
+> station wlan0 get-networks
+> station wlan0 connect SSID 
+```
+
+[man pages for iwctl](https://man.archlinux.org/man/iwctl.1) -> also contains a guid on how to connect 
+THIS ACtually worked and the adapter was now up
+
+
+## some other usefull commands in the shell
+
+
+```ìwctl
+device list 
+<shows you the device name what adaper its on and what mode its in>
+```
 # wpa_supplicant
 
 [Arch linux docs](https://wiki.archlinux.org/title/Wpa_supplicant)
@@ -142,3 +175,6 @@ command
 # Forwarding traffic from another devices over wifi
 
 this is a small guid to turn to forward traffic that you recieve from your ethernet port to your wifi connection. This allows you to connect another pc to your device and give that pc a ethernet connection. Even though you only have wifi. 
+
+
+[Superuser post](https://superuser.com/questions/684275/how-to-forward-packets-between-two-interfaces) has some start which might work. 
