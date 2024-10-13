@@ -1,4 +1,88 @@
 
+# Problem with wifi being down
+
+
+
+> the wlan0 adapter is mode DOWN or Dormant
+
+wpa_cli : could not connect to wpa_supplicant  : wlan0
+
+```shell
+ip link set wlan0 up
+```
+
+does not set the wifi to up.
+rfkill shows that it is unblocked
+
+
+[The next tried solution](https://unix.stackexchange.com/questions/90778/how-to-bring-up-a-wi-fi-interface-from-a-command-line)
+
+so I exectued the following.
+
+```shell
+ifconfig wlan0
+```
+
+curiosly enought this scans something
+```shell
+dhclient -v wlan0
+```
+
+This returns a 
+
+```
+DHCPDISCOVERY on wlan0 to 255.255.255.255 oirt 67 Interval <random numer between 3 and 20>
+...
+```
+
+response 
+
+```shell
+iwlist wlan0 scan
+```
+
+also returns valid Wifi networks in my area? But wpa_cli does not work and the Interface is still DOWN as far as `ip link show` is concerned.
+
+So I wonder if I can now connect with iwlist
+
+## connecting to wifi with iwlist
+
+since wpa_cli does not work we need to use a workaround.
+
+This is a [Tutorial ](https://unix.stackexchange.com/questions/92799/connecting-to-wifi-network-through-command-line) on how to connect to that
+
+we choose Option 2 since the other file just simply didnt exist on my current device.
+
+ifconfig -> simply is a none existant command lol ???? (under live arch boot)
+so we are skipping that step
+
+```shell
+# iwlist wlan0 scan
+```
+this should return a bunch of differen wifi networks choose the one you want to connect to 
+
+[Arch wiki for iwconfig](https://wiki.archlinux.org/title/Network_configuration/Wireless#Utilities)
+
+```shell
+iwconfig wlan0 essid <name of Hotspot> key s:<password>
+```
+
+This returns in my case 
+```Error
+Error for wireless request "set Encode (8B2A)"
+	SET failed on device wlan0 ; invalid argument
+```
+
+Searching this problem it returns 2 search results 
+[arch wiki](https://bbs.archlinux.org/viewtopic.php?id=72898)
+[this weird wordpress PDF](https://curmaraca.wordpress.com/wp-content/uploads/2015/09/error-for-wireless-request-set-encode-8b2a-wep.pdf)
+
+since none of these returned anything sensible, my next choice of action was converting the password to hex via [CyberChef](https://cyberchef.org/#recipe=To_Hex('Space',0))
+
+```shell
+iwconfig wlan0 essid <name of Hotspot> key <password in hex>
+```
+
 # wpa_supplicant
 
 [Arch linux docs](https://wiki.archlinux.org/title/Wpa_supplicant)
@@ -49,3 +133,12 @@ we use the
 > save_config
 ```
 command
+
+
+# Systemd-Network
+[Arch wiki](https://wiki.archlinux.org/title/Systemd-networkd)
+
+
+# Forwarding traffic from another devices over wifi
+
+this is a small guid to turn to forward traffic that you recieve from your ethernet port to your wifi connection. This allows you to connect another pc to your device and give that pc a ethernet connection. Even though you only have wifi. 
