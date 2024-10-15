@@ -4,6 +4,14 @@ getting the Logitech G15 to run under arch linux the normal keyboard works witho
 # TODO
 
 - [ ] Fix the AUR packages 
+# Usage
+
+you can use 
+
+g15term to execute a programm that should be showen on there 
+g15tailf to show text from a textfeil 
+
+you can have multible programms running on the same thing.
 # Drivers 
 [user manual](https://www.manua.ls/logitech/g15/manual)
 
@@ -140,3 +148,13 @@ then we can run `sudo make install`
  ```shell
  g15tailf <filename>
  ``` 
+
+
+to run a program programs need to not exit. bc once this exists this stop showing
+```shell
+g15term <program>
+```
+
+# Where are the most memory leaks ?
+
+atleast from the quick crash that I encoutnered a lot of the probelms occured in [this repo](https://github.com/vividnightmare/libg15render) specicially in screen.c and text.c
