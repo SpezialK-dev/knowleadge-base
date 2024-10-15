@@ -1,6 +1,6 @@
 
 # Problem with wifi being down
-
+[in my case working solution](## trying out iwctl and iw)
 
 > the wlan0 adapter is mode DOWN or Dormant
 
