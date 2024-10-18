@@ -1,4 +1,24 @@
 
+# Problem with wifi going down 
+
+Common trouble shooting things 
+## Common symptoms
+
+- Wifi randomly disconnecting 
+- WIFI not connecting back after disconnect
+- Dhcpcd deamon spewing random nonesense
+
+## Solution
+most often you just have multible services fighting for the same resources
+
+1. check if you have multible networking things running if so disable the ones you dont want to use in my case I wanted to use dhcpcd and iwd. 
+2. check for powre saving mode this miight improve your disconnects. Taken from here [arch wiki](https://bbs.archlinux.org/viewtopic.php?id=196375)
+
+
+the following command disbles the powersaving of the wifi chip this might increase power usage but can get better stability in some certain situations.
+```shell
+sudo iw dev wlan0 set power_save off
+```
 # Problem with wifi being down
 [in my case working solution](## trying out iwctl and iw)
 
