@@ -33,6 +33,13 @@ DHCP=true
 DHCPServer=true
 ```
 
+If you follow the tutorial you should not includ the line 
+
+```shell
+IgnoreCarrierLoss=3s
+```
+
+if you are knowen to stay in weird places where things are not configured correctly since this might lead to DHCP not getting a new lease when switching access points. Which if they are incorrectly configured leads to problems 
 # Problem with wifi going down 
 
 Common trouble shooting things 
