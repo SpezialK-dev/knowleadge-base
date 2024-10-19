@@ -17,6 +17,7 @@ NameResolvingService=systemd
 if you are using systemd for name resolution and iwd for everything else. 
 This works so far. If you dont have these 4 lines it will not work and you will not be able to ping anything but it appears as if you are connected to a network but everything is unreachable. 
 
+You could still get some problems if you are in some weird hotel wifis where you are directly between 2 accesspoints-> this creates might create problems. But I have not done enought research into that yet.
 # Problem with wifi going down 
 
 Common trouble shooting things 
