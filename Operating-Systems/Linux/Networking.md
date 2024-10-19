@@ -1,4 +1,12 @@
+# creating your own Setup
 
+[a good overview of Software](https://wiki.archlinux.org/title/Network_configuration#Network_managers)
+This gives a brief Overview
+
+In my case I use IWD as DHCP client aswell as wifi client since it has a great shell interface for that. You need to [edit the config file ](https://wiki.archlinux.org/title/Iwd#Enable_built-in_network_configuration ). And also enable systemd-resolvd or resolvconf. whatever you choose. 
+
+
+Also disable any other things like systemd networking aswell as dhcpcd and Network manager. 
 # Problem with wifi going down 
 
 Common trouble shooting things 
@@ -11,7 +19,7 @@ Common trouble shooting things
 ## Solution
 most often you just have multible services fighting for the same resources
 
-1. check if you have multible networking things running if so disable the ones you dont want to use in my case I wanted to use dhcpcd and iwd. 
+1. check if you have multible networking things running if so disable the ones you dont want to use in my case I wanted to use iwd.
 2. check for powre saving mode this miight improve your disconnects. Taken from here [arch wiki](https://bbs.archlinux.org/viewtopic.php?id=196375)
 
 
@@ -19,6 +27,8 @@ the following command disbles the powersaving of the wifi chip this might increa
 ```shell
 sudo iw dev wlan0 set power_save off
 ```
+This allows a quicker reconnect after a disconnect. But and can sometimes help but Otherwiese it does not really help if you have more services running which is usually the problem Check [creating your own Setup](# creating your own Setup) for a grafik of what to use with what. 
+
 # Problem with wifi being down
 [in my case working solution](## trying out iwctl and iw)
 
