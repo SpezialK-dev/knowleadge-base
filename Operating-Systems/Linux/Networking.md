@@ -7,6 +7,16 @@ In my case I use IWD as DHCP client aswell as wifi client since it has a great s
 
 
 Also disable any other things like systemd networking aswell as dhcpcd and Network manager. 
+if you want to use iwd aswell your '/etc/iwd/main.conf ' should look something similar to 
+```shell
+[General]
+EnableNetworkConfiguration=true
+[Network]
+NameResolvingService=systemd
+```
+if you are using systemd for name resolution and iwd for everything else. 
+This works so far. If you dont have these 4 lines it will not work and you will not be able to ping anything but it appears as if you are connected to a network but everything is unreachable. 
+
 # Problem with wifi going down 
 
 Common trouble shooting things 
