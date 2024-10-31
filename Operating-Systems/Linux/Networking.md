@@ -259,3 +259,15 @@ this is a small guid to turn to forward traffic that you recieve from your ether
 
 
 [Superuser post](https://superuser.com/questions/684275/how-to-forward-packets-between-two-interfaces) has some start which might work. 
+
+# IWD
+
+## Setting up developer mode 
+
+[Forum Post](https://unix.stackexchange.com/questions/738561/how-can-i-enable-iwd-debug-mode)
+
+```shell
+sudo /usr/lib/iwd/iwd -E
+```
+
+you should stop the systemd service before doing this. When this was done 
