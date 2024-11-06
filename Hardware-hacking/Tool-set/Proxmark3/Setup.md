@@ -135,8 +135,8 @@ after trying that did it flash?
 ./pm3-flash-bootrom 
 [=] Session log /home/spezialk/.proxmark3/logs/log_20240924210906.txt
 [+] About to use the following file:
-[+]    /home/spezialk/drive1/Applications/proxmark3/client/../bootrom/obj/bootrom.elf
-[+] Loading ELF file /home/spezialk/drive1/Applications/proxmark3/client/../bootrom/obj/bootrom.elf
+[+]    <path>/proxmark3/client/../bootrom/obj/bootrom.elf
+[+] Loading ELF file <path>/proxmark3/client/../bootrom/obj/bootrom.elf
 [+] ELF file version Iceman/master/v4.18994-127-gd2783214e-suspect 2024-09-24 16:50:44 7bbf866a9
 
 [+] Waiting for Proxmark3 to appear on /dev/ttyACM0
@@ -170,7 +170,7 @@ after trying that did it flash?
 [+]    1: V 0x00200000 P 0x00100200 (0x000014b0->0x000014b0) [R X] @0x298
 
 [+] Flashing...
-[+] Writing segments for file: /home/spezialk/drive1/Applications/proxmark3/client/../bootrom/obj/bootrom.elf
+[+] Writing segments for file: <user_path>/proxmark3/client/../bootrom/obj/bootrom.elf
 [+]  0x00100000..0x001001ff [0x200 / 1 blocks]
 . ok
 [+]  0x00100200..0x001016af [0x14b0 / 11 blocks]

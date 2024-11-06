@@ -1,4 +1,5 @@
 
+
 getting the Logitech G15 to run under arch linux the normal keyboard works without any drivers and it has 7 Key rollover as it appears from my testing so does the audio stuff mostly.
 
 # TODO
