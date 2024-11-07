@@ -275,3 +275,17 @@ the systemd service is under the following directory
 /usr/lib/systemd/system/iwd.service 
 
 you might want to edit that file if you want to permanently have access to debug features which could be handy in some situations for example being able to force certain things
+
+## EAD
+
+The wired driver for eathernet devices 
+
+
+to run it in debug mode
+
+```shell
+
+sudo /lib/iwd/ead -d
+```
+
+
