@@ -252,6 +252,28 @@ command
 # Systemd-Network
 [Arch wiki](https://wiki.archlinux.org/title/Systemd-networkd)
 
+## Problems where I dont get a connection after some time
+
+1. I checked I didnt have another DHCP server running 
+2. I identified, that Systemd-networkd was the problem since restarting this fixed me not getting anything 
+3. figured out that the problem was most likely similar to this [Github Issue ](https://github.com/systemd/systemd/issues/13432)
+
+It seems to be a problem with resolved
+it appears to be a catch all error so you need to figure it out, look at resolved with --verbose or debug flag
+
+also setting
+```config
+DNSSEC=no 
+```
+in the config file and then restarting resolved the issue for some peoeple as choosen by [this stackoverflow post](https://superuser.com/questions/1676584/using-degraded-feature-set-tcp-instead-of-udp-for-dns-server)
+
+To enable debuging follow this  [issue](https://github.com/systemd/systemd/issues/17330)
+to see your current dns server you can run 
+
+```shell
+sudo resolvedctl
+```
+
 
 # Forwarding traffic from another devices over wifi
 
@@ -259,6 +281,7 @@ this is a small guid to turn to forward traffic that you recieve from your ether
 
 
 [Superuser post](https://superuser.com/questions/684275/how-to-forward-packets-between-two-interfaces) has some start which might work. 
+
 
 # IWD
 
