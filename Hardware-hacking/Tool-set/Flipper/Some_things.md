@@ -1,0 +1,18 @@
+This File contains some things that you can do with the flipper that you might not know, 
+these are all done with the Momentum Firmware. Maybe even with the Standart firmware. But I have not tested it. 
+
+# Testing speakers
+
+GPIO > Signal Generator 
+You use the Signal Generator to test the speakers
+
+There you use the PWM Generator. 
+The Settings are as follows: 
+GPIO Pin : 2(A7)
+Frequency : 1000 Hz
+Pulse Width : 50 %
+
+you now need to connect the Pin A7 to one of the speaker wires. 
+and the second speaker wire you need to connect to the GND(8) Pin.
+
+This should generate an audio beep tone through the speakers. 
