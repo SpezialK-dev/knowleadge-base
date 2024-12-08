@@ -16,3 +16,12 @@ you now need to connect the Pin A7 to one of the speaker wires.
 and the second speaker wire you need to connect to the GND(8) Pin.
 
 This should generate an audio beep tone through the speakers. 
+
+
+# UART
+
+Simply use the UART Terminal 
+
+GPIO > Uart Terminal
+
+The settings are dependent on your device that you are looking at but you can choose the pins and also need to connect the ground Pin and then this should work. 
