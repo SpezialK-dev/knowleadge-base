@@ -25,3 +25,8 @@ Simply use the UART Terminal
 GPIO > Uart Terminal
 
 The settings are dependent on your device that you are looking at but you can choose the pins and also need to connect the ground Pin and then this should work. 
+
+
+# Continuity tester
+
+just simply use the wiretester mode. This is actually a really good continuity tester. Then simply insert to male to male cables into the marked pins and you are good to go and test for continuity
