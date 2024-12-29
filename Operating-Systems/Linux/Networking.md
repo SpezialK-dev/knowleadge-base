@@ -299,6 +299,14 @@ the systemd service is under the following directory
 
 you might want to edit that file if you want to permanently have access to debug features which could be handy in some situations for example being able to force certain things
 
+## Setting up things like 8021x Networks
+
+[ARch wiki](https://wiki.archlinux.org/title/Iwd#EAP-PEAP)
+
+In this case we need to create a file in /var/lib/iwd/nameOfnetwork.8021x
+
+in this case it was a EAP-PWD network so we just copyied the config from the arch wiki. This should allow you to then autoconnect to the network.
+
 ## EAD
 
 The wired driver for eathernet devices 
