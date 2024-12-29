@@ -312,3 +312,9 @@ sudo /lib/iwd/ead -d
 ```
 
 
+# IW 
+[Arch wiki page](https://wiki.archlinux.org/title/Network_configuration/Wireless#Utilities)
+also allows you to manage networks without security aswell as some very low level things. 
+like controlling frequencies. 
+
+in Khz. This apears to allow Very low level actions 
