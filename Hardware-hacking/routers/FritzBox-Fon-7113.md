@@ -36,3 +36,11 @@ Pin 3 was was detected based on using a Multimeter
 
 Transmits regular data during boot up so its definitely the transmit pin. 
 These pins are sending out in the RS232 Serial format more Information [here](https://www.raveon.com/wp-content/uploads/2019/01/AN236SerialComm.pdf). 
+
+The baude rate is : 
+tested with a flipper zero 
+
+| tested baude rate | success |
+| ----------------- | ------- |
+| 9600              |         |
+| 115200            |         |
