@@ -49,6 +49,7 @@ That are mainly TPM 2.0 and Secure boot requirements. You can disable/bypass the
 #!/bin/sh 
 
 exec qemu-system-x64_64 \
+    -machine q35,smm=on,accel=kvm \    
     -enable-kvm -cpu host -m 16G \
     -drive file=<name of your drive>,if=virtio \
     -device  virtio-tablet \
@@ -57,10 +58,8 @@ exec qemu-system-x64_64 \
     -monitor stdio \
     -name "win11" \
     -display gtk,grab-on-hover=on \
-    # TPM 2 Things 
     -chardev socket,id=chrtpm,path=/tmp/emulated_tpm/swtpm-sock \
-    -tpmdev emulator,id=tpm0,chardev=chrtpm -device tpm-tis,tpmdev=tpm0 \    
-    #UEFI 
+    -tpmdev emulator,id=tpm0,chardev=chrtpm -device tpm-tis,tpmdev=tpm0 \     
     -drive if=pflash,format=raw,readonly=on,file=<Path to OVMF_CODE.secboot.4m.fd> \
     -drive if=pflash,format=raw,file=<Path to OVMF_VARS.4m.fd> \
 
@@ -99,7 +98,7 @@ as it is mentioned before
 ```shell
     ...
   -chardev socket,id=chrtpm,path=/tmp/emulated_tpm/swtpm-sock \
-  -tpmdev emulator,id=tpm0,chardev=chrtpm -device tpm-tis,tpmdev=tpm0
+  -tpmdev emulator,id=tpm0,chardev=chrtpm -device tpm-tis,tpmdev=tpm0 \
 
 ```
 
@@ -125,9 +124,10 @@ Since I do not want them changed, though they should not change but this also sh
 
 you might need to adjust these paths since they where used under arch linux 
 ```shell
-cp /usr/share/edk2/x64/OVMF_CODE.secboot.4m.fd ./UEFI/ /usr/share/edk2/x64/OVMF_VARS.4m.fd ./UEFI/
+cp /usr/share/edk2/x64/* ./UEFI/
 ```
-throws an error but still copys the files so it should be fine. 
+Theoretically you only need to copy the VARs file since that is the  only thing being [changed](https://wiki.debian.org/SecureBoot/VirtualMachine)
+ 
 
 the add the following 4 lines to your script 
 ```shell 
@@ -135,4 +135,26 @@ the add the following 4 lines to your script
  #UEFI 
     -drive if=pflash,format=raw,readonly=on,file=<Path to OVMF_CODE.secboot.4m.fd> \
     -drive if=pflash,format=raw,file=<Path to OVMF_VARS.4m.fd> \
+    -machine q35,smm=on,accel=kvm \
 ```
+
+##### Display output not active
+
+you forgot to add the line 
+
+```shell
+-machine q35,smm=on,accel=kvm \
+```
+most likely 
+
+##### Failed to load Boot0001 "UEFI Misc Device" from ...
+[Proxmox Forums](https://forum.proxmox.com/threads/guest-has-not-initialized-the-display-yet-on-new-ovmf-vms-after-update-to-7-0-13.98179/) 
+
+Just wait to get into the UEFI shell 
+once you are there type the following commands :
+
+
+[Command Help](https://hatchjs.com/efi-shell-version-2-70-commands/)
+[A helpfull guid to fixing this problem and related ones ](https://mricher.fr/post/boot-from-an-efi-shell/)
+
+if you wait long enought you get into a uefi boot menue where you can should be able to select the boot drive but it does not find any drives.
