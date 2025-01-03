@@ -3,6 +3,8 @@
 this explains some basic commandline usage
 
 # Windows 
+[A good repo with some good information](https://github.com/infokiller/win10-vm)
+
 
 ## creating a inital virtual maschine 
 [A guid for win10](https://pragmaticaddict.com/qemu-win10.html)
