@@ -53,7 +53,7 @@ That are mainly TPM 2.0 and Secure boot requirements. You can disable/bypass the
 exec qemu-system-x64_64 \
     -machine q35,smm=on,accel=kvm \    
     -enable-kvm -cpu host -m 16G \
-    -drive file=<name of your drive>,if=virtio \
+    -drive file=<name of your drive> \
     -device  virtio-tablet \
     -rtc base=localtime \
     -net nic,model=virtio-net-pci -net user,hostname=win11 \
@@ -73,6 +73,14 @@ THe Following command needs to be run in a seperate terminal window everytime be
 mkdir /tmp/emulated_tpm
 swtpm socket --tpmstate dir=/tmp/emulated_tpm --ctrl type=unixio,path=/tmp/emulated_tpm/swtpm-sock --log level=20 --tpm2
 ```
+the following command differs slightly from the one mentioned abouve in that it removed the mention to what kind of media it is, this seems to create a problem with the UEFI. 
+
+
+```sh
+sh <script from abouve>.sh -boot d -drive file=<path to windows iso>.iso
+```
+
+
 
 
 
@@ -134,7 +142,6 @@ Theoretically you only need to copy the VARs file since that is the  only thing 
 the add the following 4 lines to your script 
 ```shell 
 ...   
- #UEFI 
     -drive if=pflash,format=raw,readonly=on,file=<Path to OVMF_CODE.secboot.4m.fd> \
     -drive if=pflash,format=raw,file=<Path to OVMF_VARS.4m.fd> \
     -machine q35,smm=on,accel=kvm \
@@ -160,3 +167,15 @@ once you are there type the following commands :
 [A helpfull guid to fixing this problem and related ones ](https://mricher.fr/post/boot-from-an-efi-shell/)
 
 if you wait long enought you get into a uefi boot menue where you can should be able to select the boot drive but it does not find any drives.
+It will find the drive if you stop specifing what kind of drive it is. This seems to be the cause of my problems so. You will need to remove it both on the cd with the ISO and just label it as a generic drive
+aswell as on the drive you want to write to for them to show up in the UEFI firmware. 
+
+if it does not automactically boot simply type exit into the uefi shell this will take you to a menu, where you can manually boot from a specific device. 
+Otherwiese you can also adjust the boot order manually, either from the shell or from the menu. 
+[This also says that you might need to adjust the boot order](https://github.com/virtio-win/kvm-guest-drivers-windows/wiki/Driver-installation#installing-drivers-required-for-windows-installation-such-as-hard-disk-drivers)
+
+
+## Driver Issues 
+
+Windows 11 seems to need driver to run under KVM/QEMU these seem to be missing to it wants an additional disk from
+it might be from removing the specifiesr of what kind the drives are that are not creating the problem  
