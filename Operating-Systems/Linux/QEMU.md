@@ -38,7 +38,7 @@ excep the -tpm modul this is from the faking a TPm setion
 
 
 ```sh
-sh <script from abouve>.sh -boot d -drive file=<path to windows iso>.iso media=cdrom 
+sh <script from abouve>.sh -boot d -drive file=<path to windows iso>.iso,media=cdrom 
 ```
 
 ### Win 11
@@ -53,7 +53,7 @@ That are mainly TPM 2.0 and Secure boot requirements. You can disable/bypass the
 exec qemu-system-x64_64 \
     -machine q35,smm=on,accel=kvm \    
     -enable-kvm -cpu host -m 16G \
-    -drive file=<name of your drive> \
+    -drive file=<name of your drive>,if=virtio \
     -device  virtio-tablet \
     -rtc base=localtime \
     -net nic,model=virtio-net-pci -net user,hostname=win11 \
@@ -77,11 +77,13 @@ the following command differs slightly from the one mentioned abouve in that it 
 
 
 ```sh
-sh <script from abouve>.sh -boot d -drive file=<path to windows iso>.iso
+sh <script from abouve>.sh -boot d -drive file=<path to windows iso>.iso,media)cdrom
 ```
 
 
+## Windows having problems with the drive to install to 
 
+I think this might be the issue since even when adding registry keys to bypass the other checks it still did not work. But the DIsk did show up and even after formating it did not work
 
 
 ## Faking a TPM
@@ -176,6 +178,4 @@ Otherwiese you can also adjust the boot order manually, either from the shell or
 
 
 ## Driver Issues 
-
-Windows 11 seems to need driver to run under KVM/QEMU these seem to be missing to it wants an additional disk from
-it might be from removing the specifiesr of what kind the drives are that are not creating the problem  
+Was caused by me removing the media=cdrom from the boot medium, this is quite important as it apears. Otherwiese it will not detect it as the correkt drive.
