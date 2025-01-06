@@ -49,3 +49,5 @@ This Microsoft signed Ubunut shim exists this could be used to boot Arch linux w
 [shim-signed 15.8+ubuntu+1.59-1](https://aur.archlinux.org/packages/shim-signed)
 
 This might fit better with my purpose.
+
+you can acutally do it with a  [preloader](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#PreLoader) as descriebed in one of the methodes in this [wiki page](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#ISO_repacking)
