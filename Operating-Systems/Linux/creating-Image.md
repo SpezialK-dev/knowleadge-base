@@ -97,6 +97,27 @@ The only problem Could be with preloader is that the ones that exist in the repo
 
 [We will use this aproach](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Replacing_the_boot_loader_with_PreLoader) since, this is the easiest. 
 
+this command extracts from the image
+```shell
+osirrox -indev archlinux-YYYY.MM.DD-x86_64.iso \
+	-extract_boot_images ./ \
+	-extract /EFI/BOOT/BOOTx64.EFI loader.efi
+```
+
+```shell
+
+mcopy -D oO -i eltorito_img2_uefi.img BOOTx64.EFI loader.efi HashTool.efi ::/EFI/BOOT/
+```
+
+```shell
+xorriso -indev archlinux-YYYY.MM.DD-x86_64.iso \
+	-outdev archlinux-YYYY.MM.DD-x86_64-Secure_Boot.iso \
+	-map_l ./ /EFI/BOOT/ BOOTx64.EFI loader.efi HashTool.efi -- \
+	-boot_image any replay \
+	-append_partition 2 0xef eltorito_img2_uefi.img
+```
+
+
 
 ### Further customization 
 
@@ -115,4 +136,4 @@ the -o option optional
 #### Error <> is missing profiledef.sh
 
 
-the file is inside of the image. 
+the file is inside of the image. That you are building you should specify to that 
