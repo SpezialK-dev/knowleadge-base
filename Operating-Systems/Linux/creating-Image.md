@@ -121,17 +121,75 @@ xorriso -indev archlinux-YYYY.MM.DD-x86_64.iso \
 
 ### Further customization 
 
+#### Customizing Pacman to include specific AUR packages
+A [list of mirrors ](https://wiki.archlinux.org/title/Unofficial_user_repositories) is here add the one you need to the pacman config in releng/pacman.conf
+There you simply need to add the mirror that you need
+
+If no internet repo exists, you could simply add a local mirror with the a snapshot. 
+
+##### Custom Repo
+[As described in the Arch wiki](https://wiki.archlinux.org/title/Custom_local_repository#Custom_local_repository)
+
+I will do it a bit differently, but it should still be valid. 
+I am creating a dir in the root where I will store the that directory and I will link to there
+```sh
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/<your package.tar.gz>
+```
+
+the path to that file will be our server config 
+
+so in the pacman.conf we will append the following option 
+```pacman.conf
+[<the name of your package>]
+file = file://<path to your file>
+```
+
+
+#### Adding boot option to only boot into the intramfs under Systemd boot
+[Taken from this Ubuntu Forum post](https://askubuntu.com/questions/1043242/how-do-i-force-ubuntu-to-boot-into-initramfs) but since its the boot process it should not matter.
+[Arch has a bit more proper documentation](https://wiki.archlinux.org/title/Systemd-boot#Loader_configuration)
+for systemdboot in this case since that is what the archinstaller uses for UEFI boot situations.
+
+[The more advances Standart](https://uapi-group.org/specifications/specs/boot_loader_specification/)
+[Systemd-Boot documentation](https://systemd.io/BOOT/)
+
+
+It appears we need to seet some kernel parameters an incompleate list and how to do it in generall is described here
+[Parameter List arch wiki](https://wiki.archlinux.org/title/Kernel_parameters#Parameter_list)
+
+
+to the releng/efiboot/loader/entries directory add a entry with another number
+the sort key setting is entirely optional and can be omited 
+
+```shell
+title    InitramFS
+sort-key 0<your number give the file>
+linux    /%INSTALL_DIR%/boot/x86_64/vmlinuz-linux
+initrd   /%INSTALL_DIR%/boot/x86_64/initramfs-linux.img
+options  archisobasedir=%INSTALL_DIR% archisosearchuuid=%ARCHISO_UUID% break
+```
+
+or you can edit the current boot option and manually add the break to it.
+
+this should create an entry in the boot options to boot to the intiramfs, you should name it apropatily aswell
+
+#### OS information 
+
+Simply copy the /etc/os-release into the airootfs/etc directory, there you can edit it this will also change information about your OS. 
+
 
 ### Creating the image 
 
 the command to create the image is as follows 
 
 ```shell
-sudo mkarchiso -m iso -A <name of your application> -v ./ -w <path where you're files are>/releng <path where you're files are>/releng/
+sudo mkarchiso -m iso -A <name of your application> -v ./ -w <path for you to work in >/releng <path where you're files are>/releng/
 ```
 
-the -o option optional
+-w should be a location in /tmp since you do not need these files if you want these files to be destroyed after creating the image. And these are mearly temporary files
 
+the -o option optional
+when selecting the profile you should not select the profiles.sh (the one that is located in relang) directly just the directory
 
 #### Error <> is missing profiledef.sh
 
