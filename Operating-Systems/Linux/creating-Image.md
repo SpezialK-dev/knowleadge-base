@@ -143,7 +143,7 @@ so in the pacman.conf we will append the following option
 [<the name of your package>]
 file = file://<path to your file>
 ```
-
+this should work in theory but I didnt manage to get it to work
 
 #### Adding boot option to only boot into the intramfs under Systemd boot
 [Taken from this Ubuntu Forum post](https://askubuntu.com/questions/1043242/how-do-i-force-ubuntu-to-boot-into-initramfs) but since its the boot process it should not matter.
