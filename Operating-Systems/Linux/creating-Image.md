@@ -156,7 +156,7 @@ Server = https://www.blackarch.org/blackarch/$repo/os/$arch
 
 If you intend to to do that you should also have the repo added to your pacman or atleast the keys it is signed with, since those are needed during the inital build of the system. 
 
-The full path is as follows : /airrootfs/etc/pacman.d/gnupg/*
+The full path is as follows : /airootfs/etc/pacman.d/gnupg/*
 
 ###### bypass
 If you want to bypass adding the keys to your system you could add the following line to the blackarch config though this is not recomended you do 
@@ -198,6 +198,17 @@ this should create an entry in the boot options to boot to the intiramfs, you sh
 
 Simply copy the /etc/os-release into the airootfs/etc directory, there you can edit it this will also change information about your OS. 
 
+
+### customizing the initramfs
+This is only under very specific circumstances needed and otherwiese should be avoided
+The initramfs is managed by [MKinitcpio](https://wiki.archlinux.org/title/Mkinitcpio) in the default iso, there are alternatives but I will use this. 
+
+Some configuration hints can be found in the [Arch wiki further down](https://wiki.archlinux.org/title/Mkinitcpio#Configuration)
+
+In the archiso the specific file can be found under ./relang/airootfs/etc/mkinitcpio.conf.d/archiso.conf
+you could also create an entirely new file if you wanted to but then you would need to specify it in ./relang/airootfs/etc/mkinitcpio.d/linux.preset
+
+I recomend you take a look at the documentation, in my usecase I will simply get the required things by using the binaries keyword.
 
 ### Creating the image 
 
