@@ -139,11 +139,32 @@ wget https://aur.archlinux.org/cgit/aur.git/snapshot/<your package.tar.gz>
 the path to that file will be our server config 
 
 so in the pacman.conf we will append the following option 
+
 ```pacman.conf
 [<the name of your package>]
 file = file://<path to your file>
 ```
 this should work in theory but I didnt manage to get it to work
+
+Alternative if you want to add a custom repo like blackarch you can simply add it like it is in [Blackarch ISO](https://github.com/BlackArch/blackarch-iso/tree/master), 
+
+
+```pacman.conf
+[blackarch]
+Server = https://www.blackarch.org/blackarch/$repo/os/$arch
+```
+
+If you intend to to do that you should also have the repo added to your pacman or atleast the keys it is signed with, since those are needed during the inital build of the system. 
+
+The full path is as follows : /airrootfs/etc/pacman.d/gnupg/*
+
+###### bypass
+If you want to bypass adding the keys to your system you could add the following line to the blackarch config though this is not recomended you do 
+```pacman.conf
+[blackarch]
+SigLevel = Never
+Server = https://www.blackarch.org/blackarch/$repo/os/$arch
+```
 
 #### Adding boot option to only boot into the intramfs under Systemd boot
 [Taken from this Ubuntu Forum post](https://askubuntu.com/questions/1043242/how-do-i-force-ubuntu-to-boot-into-initramfs) but since its the boot process it should not matter.
