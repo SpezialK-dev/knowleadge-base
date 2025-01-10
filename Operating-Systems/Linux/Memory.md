@@ -43,6 +43,9 @@ sudo hexdump -C --skip 0x0005000 /dev/mem | head
 ```
 
 0x0100000(00f0000) apears to be the highest possible address we can read out with sudo privilages under a normal arch install. 
+### working with Lime and fmem
+[A forensics guid](https://forensecurity.blogspot.com/2013/12/linux-memory-forensics.html)
+
 
 ### with c/c++
 
