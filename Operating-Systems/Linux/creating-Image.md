@@ -210,6 +210,11 @@ you could also create an entirely new file if you wanted to but then you would n
 
 I recomend you take a look at the documentation, in my usecase I will simply get the required things by using the binaries keyword.
 
+### adding a custom kernel modul into the initramfs and in general 
+
+in this case we want to simply get a new kernel modul into the initramfs for this we need to add the package
+
+
 ### Creating the image 
 
 the command to create the image is as follows 

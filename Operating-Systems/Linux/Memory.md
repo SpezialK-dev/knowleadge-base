@@ -50,3 +50,28 @@ sudo hexdump -C --skip 0x0005000 /dev/mem | head
 ### with c/c++
 
 you can open it with [open](https://www.man7.org/linux/man-pages/man2/open.2.html)
+a guid [from eeces umich](https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/cppBinaryFileIO-1.html)
+
+
+in general it can be done like any other stream
+```c++
+//meaning the following code works
+std::ifstream fd;
+
+//since we have a binary data stream
+fd.open(/dev/fmem, std::ios::in | std::ios::binary);
+
+if(!fd){
+	//error handdling
+}
+//len is an abitraray value
+char* buffer = new char[len];
+
+//this reads the file
+//read data is writen into buffer, len is the amount that will be writen into buffer
+fd.read(buffer, len);
+
+global_pos += len
+//moves the fd pointer forward
+fd.seekg(global_pos)
+```
