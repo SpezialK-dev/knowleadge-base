@@ -42,15 +42,20 @@ Some of the paths are taken from [This Nvidia Kernel driver](https://aur.archlin
 The correct path for the package where to copy the package into after compiling it.
 
 [Some guid on actually compiling this thing](https://wiki.archlinux.org/title/Compile_kernel_module)
-
-Though I have not fully understood why I should have zstd in this thing. 
  
+importantly so that you later can load the module with a simpel modprobe
 ```shell
+buidl)({
+	#.. rest of the build process
+	zst ./<your kernel package>.ko
+
+}
+
 
 package(){
 	_kernver=$(</usr/src/linux/version)	
 	cd $pkgname	
-	install -Dvt "$pkgdir/usr/lib/modules/$_kernver/updates" -m0644 fmem.ko
+	install -Dvt "$pkgdir/usr/lib/modules/$_kernver/updates" -m0644 <kernel_package>.ko.zst
 		
 }
 ```
