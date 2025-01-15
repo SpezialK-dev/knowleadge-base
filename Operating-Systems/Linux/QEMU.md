@@ -1,6 +1,13 @@
-# BASIC commandline Usage 
+# Basic commandline Usage 
 
 this explains some basic commandline usage
+
+# common issues 
+
+
+## qemu-system-x86_64:  : Could not open ' ': No such file or directory
+
+means if you have split the script into multiple lines that somewhere you have a \ with a space behind, or some other syntax error. Recheck all \ that there is no space after them and that they are the last symbol in the line
 
 # Windows 
 [A good repo with some good information](https://github.com/infokiller/win10-vm)
@@ -20,7 +27,7 @@ the following command then runs the Virtual maschine
 ```shell
 #!/bin/sh 
 
-exec qemu-system-x64_64 \
+exec qemu-system-x86_64 \
     -enable-kvm -cpu host -m 16G \
     -drive file=<name of your drive>,if=virtio \
     -device  virtio-tablet \
@@ -30,7 +37,7 @@ exec qemu-system-x64_64 \
     -name "win10" \
     -display gtk,grab-on-hover=on \
     
-"$@"
+	"$@"
 ```
 the last line "$@" allows more commandline parameters
 all of the commands are explained in the top linked article 
@@ -50,7 +57,7 @@ That are mainly TPM 2.0 and Secure boot requirements. You can disable/bypass the
 ```shell
 #!/bin/sh 
 
-exec qemu-system-x64_64 \
+exec qemu-system-x86_64 \
     -machine q35,smm=on,accel=kvm \    
     -enable-kvm -cpu host -m 16G \
     -drive file=<name of your drive>,if=virtio \
@@ -65,7 +72,7 @@ exec qemu-system-x64_64 \
     -drive if=pflash,format=raw,readonly=on,file=<Path to OVMF_CODE.secboot.4m.fd> \
     -drive if=pflash,format=raw,file=<Path to OVMF_VARS.4m.fd> \
 
-"$@"
+	"$@"
 ```
 
 THe Following command needs to be run in a seperate terminal window everytime before you start the VM to create a new TPM modul
@@ -77,7 +84,7 @@ the following command differs slightly from the one mentioned abouve in that it 
 
 
 ```sh
-sh <script from abouve>.sh -boot d -drive file=<path to windows iso>.iso,media)cdrom
+sh <script from abouve>.sh -boot d -drive file=<path to windows iso>.iso,media=cdrom
 ```
 
 

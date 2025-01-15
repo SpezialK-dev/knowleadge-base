@@ -129,20 +129,23 @@ If no internet repo exists, you could simply add a local mirror with the a snaps
 
 ##### Custom Repo
 [As described in the Arch wiki](https://wiki.archlinux.org/title/Custom_local_repository#Custom_local_repository)
+Also helpfull is this [Artikle on offline installation](https://wiki.archlinux.org/title/Offline_installation)
+since it explains how to create a local repo
 
-I will do it a bit differently, but it should still be valid. 
-I am creating a dir in the root where I will store the that directory and I will link to there
-```sh
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/<your package.tar.gz>
+you will also in the repo you want to do create a [local db](https://bbs.archlinux.org/viewtopic.php?id=187714)
+
+```shell
+repo-add -n <name of your package>.db.tar.xz *.pkg.tar*
 ```
+and then have a full path of your installation medium meaning a fully qualified path to this. 
 
-the path to that file will be our server config 
+
 
 so in the pacman.conf we will append the following option 
 
 ```pacman.conf
 [<the name of your package>]
-file = file://<path to your file>
+file = file:///<path to your file>
 ```
 this should work in theory but I didnt manage to get it to work
 
