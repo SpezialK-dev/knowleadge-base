@@ -326,3 +326,10 @@ also allows you to manage networks without security aswell as some very low leve
 like controlling frequencies. 
 
 in Khz. This apears to allow Very low level actions 
+
+# some testing things
+
+see all open ports helpfull when debugging server applications 
+```shell
+ss -tunlp
+```
