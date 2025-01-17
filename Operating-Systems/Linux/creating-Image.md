@@ -235,3 +235,28 @@ when selecting the profile you should not select the profiles.sh (the one that i
 
 
 the file is inside of the image. That you are building you should specify to that 
+
+# Creating PXE bootable images
+## some sources
+
+- [PXE Booting x86_64 UEFI Clients with Dnsmasq](https://ressman.org/posts/2018-05-06-pxe-boot-up-boards/)
+- [ ]
+
+the special problem with PXE boot is, that the initramfs needs to be a seperate file aswell as the bootloader. 
+Getting a special bootloader is not a problem especially if you want to secure boot. 
+
+
+Since this is a problem in generall we will take a look at 
+## Unpacking ISO files
+
+since that is a general solution that should work with every Distrobution.
+[The arch guid to replacing the boot loader with preloader](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Replacing_the_boot_loader_with_PreLoader).
+
+
+# Creating a bootable usb 
+
+[Arch wiki](https://wiki.archlinux.org/title/USB_flash_installation_medium)
+
+```shell 
+cp path_to_iso > /dev/sda
+```
