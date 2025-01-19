@@ -15,3 +15,17 @@ though this command is not enought to get a working PXE boot.
 ## dnsmasq: failed to create listening socket for port 53: Address already in use
 
 this is usually the case because of systemd-resolved you can simply stop this service and everything will continue to work.
+
+# Setting up for direct SSH connections 
+
+because sometimes you might just want to directly connect through something 
+[A unix stackexchange post about it ](https://unix.stackexchange.com/questions/295238/how-to-connect-to-device-via-ssh-over-direct-ethernet-connection)
+
+the following bash script will set up an appropriate server.
+
+```shell
+sudo dnsmasq -d -C /dev/null --port=0 --domain=localdomain --interface=<your ethernet interface> --dhcp-range=192.168.9.2,192.168.9.10,99h
+```
+
+-C /dev/null means it does not read the normal config file 
+--port=0 --domain=localdomain deaktivates the dns server 
