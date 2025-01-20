@@ -3,14 +3,17 @@ first to just boot a normal windows of this to install it.
 
 [a github guid](https://github.com/WillChamness/Dnsmasq-PXE)
 [setting it up as tftp server](https://stelfox.net/blog/2013/12/using-dnsmasq-as-a-standalone-tftp-server/)
+[A guid for getting windows over pxe boot](https://musteresel.github.io/posts/2018/04/install-windows-over-pxe-with-dnsmasq-pxelinux-winpe.html)
 
 ```shell
 sudo dnsmasq  -d --interface=enp1s0 --dhcp-range=10.13.37.100,10.13.37.101,255.255.255.0,1h --dhcp-boot=bootx64.efi --enable-tftp --tftp-root=<path to your pxe root direcotry> --log-dhcp
 ```
 though this command is not enought to get a working PXE boot. 
 
-## 
+## Firewall
 
+configure your firewall in a way where you can use that specific port. 
+I will not go into that here sicne that is a different thing and is different from firewall to firewall
 
 ## dnsmasq: failed to create listening socket for port 53: Address already in use
 

@@ -252,10 +252,12 @@ Since this is a problem in generall we will take a look at
 since that is a general solution that should work with every Distrobution.
 [The arch guid to replacing the boot loader with preloader](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Replacing_the_boot_loader_with_PreLoader).
 
-
+In general you want to unpack these iso files to obtain the initramfs so that you can seperate it from the rest of the operating system. 
+Another option would be to just build the initrmafs itself, this should also work.This has also been discussed on the  [Arch forums ](https://bbs.archlinux.org/viewtopic.php?id=250438) to some degree. 
 # Creating a bootable usb 
 
 [Arch wiki](https://wiki.archlinux.org/title/USB_flash_installation_medium)
+for most linux distrobtions its as easy as simply copying the file onto the harddrive, I think for windows ISOs you need to do some extra steps to get them to work. 
 
 ```shell 
 cp path_to_iso > /dev/sda

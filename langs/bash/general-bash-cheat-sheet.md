@@ -44,3 +44,15 @@ the following command returns the pid of the running script
 ```shell
 echo & 
 ```
+
+
+# funktions 
+
+since sometimes you want to make your code to funktions 
+[Source of Information](https://linuxize.com/post/bash-functions/)
+
+```bash 
+function_name () {
+  commands
+}
+```
