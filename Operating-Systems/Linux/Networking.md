@@ -333,3 +333,9 @@ see all open ports helpfull when debugging server applications
 ```shell
 ss -tunlp
 ```
+
+
+# Firewalls
+
+under arch if you want to use nftables as your firewall instrall the 
+iptables-nft package since base and some other packages still depend on iptables even though you dont want to use it 
