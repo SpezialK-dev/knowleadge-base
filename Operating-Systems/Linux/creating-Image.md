@@ -223,7 +223,7 @@ in this case we want to simply get a new kernel modul into the initramfs for thi
 the command to create the image is as follows 
 
 ```shell
-sudo mkarchiso -m iso -A <name of your application> -v ./ -w <path for you to work in >/releng <path where you're files are>/releng/
+sudo mkarchiso -m iso -A <name of your application> -v  -w <path for you to work in > <path where you're files are /releng/ yes this is just seperated by a space>
 ```
 
 -w should be a location in /tmp since you do not need these files if you want these files to be destroyed after creating the image. And these are mearly temporary files
