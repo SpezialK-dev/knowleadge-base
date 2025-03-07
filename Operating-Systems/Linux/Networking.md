@@ -333,7 +333,20 @@ see all open ports helpfull when debugging server applications
 ```shell
 ss -tunlp
 ```
+## tcpdump
 
+you should have this installed
+
+```shell
+$tcpdump -D
+``` 
+gives you all interfaces and everything that you can listen to with tcpdump
+
+with 
+```shell
+tcpdump -i <interface>
+```
+you will then listen to that specific interface 
 
 # Firewalls
 
