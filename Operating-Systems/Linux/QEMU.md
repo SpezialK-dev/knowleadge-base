@@ -186,3 +186,20 @@ Otherwiese you can also adjust the boot order manually, either from the shell or
 
 ## Driver Issues 
 Was caused by me removing the media=cdrom from the boot medium, this is quite important as it apears. Otherwiese it will not detect it as the correkt drive.
+
+
+# Debugging no Internet in your VM 
+
+since this is what is occuring to me these are the steps I took to fix it. 
+
+firstly I check what configuration appears on the guest 
+with 
+```shell
+ip a
+```
+the ethernet device shows up. 
+then I check the bridged interface 
+
+```shell
+# tcpdump -i virbr0
+```
