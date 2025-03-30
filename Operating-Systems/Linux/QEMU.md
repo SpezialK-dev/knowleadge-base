@@ -216,3 +216,6 @@ so you have to add
 iifname virbr0 accept
 ```
 to the /etc/nftables.conf config file. and then Rebooting fixed the issue (dont forget to reenable the nftables service )
+
+Though that allowed me to forward dhcp requests and atleast connect though i had no internet so i simply switched to ufw. 
+and followed the given command in the artix post. 
