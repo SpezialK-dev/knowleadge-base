@@ -1,5 +1,5 @@
 
-[Clang Format Style ](https://clang.llvm.org/docs/ClangFormatStyleOptions.html)
+[Clang Format Style ](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) 
 
 a tool you could use is [clang format configurator](https://clang-format-configurator.site/).
 
@@ -25,3 +25,5 @@ clang-format -style=file:.clang-format -i src/*
 ```
 
 will replace the things inplace
+
+
