@@ -9,3 +9,13 @@
 - 
 
 Some tutorial on how to to deal with text processing can be found [In this note](/langs/c++/IO) Where I am looking at reading none cannonical inputs 
+
+
+
+# VT 100 escape sequeneces
+[web archive source ](https://web.archive.org/web/20121225024852/http://www.climagic.org/mirrors/VT100_Escape_Codes.html)
+
+clear line : 
+```
+\33[2K\r
+```
