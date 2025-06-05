@@ -15,3 +15,10 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 ```
 
 After that the application should no longer stay white 
+
+# Setting Brightness 
+
+```config 
+bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+```
