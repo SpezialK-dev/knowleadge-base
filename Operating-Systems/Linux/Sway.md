@@ -22,3 +22,14 @@ After that the application should no longer stay white
 bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 ```
+
+
+# launchers 
+
+https://github.com/Cloudef/bemenu -> if you want the most similar to i3 experience 
+
+
+# Launching things on specifc 
+
+[readme](https://gist.github.com/3lpsy/9fc13dae3ba9c176013e3f6457b458e2)
+
